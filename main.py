@@ -1,3 +1,6 @@
+from statistics import pvariance
+
+
 class Student:
     def __init__(
         self,
@@ -27,6 +30,18 @@ class Student:
             f"English: {s['english']}, Math: {s['math']}\n"
             f"Total: {self.total_score()}, Average: {self.average_score()}"
         )
+
+
+def course_score_variance(students: list[Student], course: str) -> float:
+    """Population variance of scores for the given course across students."""
+    course_key = course.lower()
+    if course_key not in ("english", "math"):
+        raise ValueError(f"Unknown course: {course}")
+    if not students:
+        raise ValueError("students must not be empty")
+
+    scores = [student.scores()[course_key] for student in students]
+    return pvariance(scores)
 
 
 if __name__ == "__main__":
