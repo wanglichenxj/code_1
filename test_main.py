@@ -1,9 +1,12 @@
+"""Unit tests for Student and course_score_variance."""
+
 import unittest
 
 from main import Student, course_score_variance
 
 
 class TestStudent(unittest.TestCase):
+    """Tests for individual student score helpers."""
     def setUp(self) -> None:
         self.student = Student("Alice", "S001", 80.0, 90.0)
 
@@ -36,6 +39,8 @@ class TestStudent(unittest.TestCase):
 
 
 class TestCourseScoreVariance(unittest.TestCase):
+    """Tests for cohort variance by course."""
+
     def test_english_variance(self) -> None:
         students = [
             Student("A", "1", 80.0, 0.0),
